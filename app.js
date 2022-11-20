@@ -26,6 +26,9 @@ app.post("/api/users", validateUser, usersHandlers.postUser);
 app.put("/api/users/:id", validateUser, usersHandlers.updateUsers);
 app.put("/api/movies/:id", validateMovie, movieHandlers.updateMovie);
 
+app.delete("/api/movies/:id", movieHandlers.deleteMovie);
+app.delete("/api/users/:id", usersHandlers.deleteUser);
+
 app.listen(port, (err) => {
   if (err) {
     console.error("Something bad happened");
