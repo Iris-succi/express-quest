@@ -2,7 +2,7 @@ const database = require("./database");
 const { query } = require("./database");
 
 const getUsers = (req, res) => {
-  let sql = "select firstname, lastname, email, city, language from users";
+  let sql = "select * from users";
   const sqlValuesUsers = [];
 
   if (req.query.language != null) {
@@ -29,10 +29,7 @@ const getUsers = (req, res) => {
 const getUsersById = (req, res) => {
   const id = parseInt(req.params.id);
   database
-    .query(
-      `select firstname, lastname, email, city, language from users where id= ?`,
-      [id]
-    )
+    .query(`select * from users where id= ?`, [id])
     .then(([users]) => {
       if (users[0] != null) {
         res.json(users[0]);
